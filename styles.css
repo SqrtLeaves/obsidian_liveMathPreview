@@ -1,5 +1,18 @@
-.inline-math-preview-container {
-	padding: var(--size-4-2) 0;
+.inline-math-preview-popup {
+	position: fixed;
+	z-index: 999999;
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	box-shadow: var(--shadow-s);
+	padding: var(--size-4-2) var(--size-4-3);
 	text-align: center;
-	overflow-x: auto;
+	min-width: 2em;
+	pointer-events: auto;
+	cursor: grab;
+	user-select: none;
+}
+
+.inline-math-preview-popup.is-dragging {
+	cursor: grabbing;
 }
