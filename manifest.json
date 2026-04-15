@@ -1,0 +1,9 @@
+{
+	"id": "inline-math-preview",
+	"name": "Inline Math Preview",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Show a rendered MathJax preview below inline math when the cursor is inside it, just like Obsidian does for display math blocks.",
+	"author": "Kimi",
+	"isDesktopOnly": false
+}

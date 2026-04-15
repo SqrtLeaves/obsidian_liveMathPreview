@@ -1,0 +1,5 @@
+.inline-math-preview-container {
+	padding: var(--size-4-2) 0;
+	text-align: center;
+	overflow-x: auto;
+}

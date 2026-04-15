@@ -1,0 +1,18 @@
+创建obsidian的plugin
+在live preview的时候，当我们在type一个数学公式的时候，当我们的光标在$#currsor$的时候，我们是看不到当前这个公式的渲染
+
+plugin做的就是即便光标在$之间，我们仍然能够在旁边看到目前的formula渲染后的效果
+
+注意obsidian在光标位于$$#cursor$$的时候已经实现类似的效果了，你只要确保在$#cursor$的时候也有类似的效果就行了
+
+我的需求清晰吗？
+
+~
+
+$x \in$ 正常渲染，但是 $x \in $就不行，能否通过这个plugin使得即便开头结尾有空格，也能正常渲染？然后在source mode中也有效
+
+~
+
+cp main.js /Users/leaves/BAIDU_SYNC/Obsidian/MATH/.obsidian/plugins/inline-math-preview/;
+cp manifest.json /Users/leaves/BAIDU_SYNC/Obsidian/MATH/.obsidian/plugins/inline-math-preview/;
+cp styles.css /Users/leaves/BAIDU_SYNC/Obsidian/MATH/.obsidian/plugins/inline-math-preview/
