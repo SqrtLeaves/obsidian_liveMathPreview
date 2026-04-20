@@ -21,6 +21,7 @@ interface InlineMathPreviewSettings {
 	popupTop: number;
 	fontSize: number;
 	backgroundColor: string;
+	fontColor: string;
 }
 
 const DEFAULT_SETTINGS: InlineMathPreviewSettings = {
@@ -29,6 +30,7 @@ const DEFAULT_SETTINGS: InlineMathPreviewSettings = {
 	popupTop: 0,
 	fontSize: 16,
 	backgroundColor: 'var(--background-primary)',
+	fontColor: 'var(--text-normal)',
 };
 
 // ── CodeMirror state effect for enabling/disabling ──
@@ -209,6 +211,7 @@ function buildInlineMathPreviewViewPlugin(plugin: InlineMathPreviewPlugin) {
 					// Apply current style settings
 					this.popup.style.fontSize = `${plugin.settings.fontSize}px`;
 					this.popup.style.backgroundColor = plugin.settings.backgroundColor;
+					this.popup.style.color = plugin.settings.fontColor;
 
 					// Defer coordinate reading until after layout is done
 					update.view.requestMeasure({
@@ -304,6 +307,17 @@ class InlineMathPreviewSettingTab extends PluginSettingTab {
 						this.plugin.setBackgroundColor(value);
 					})
 			);
+
+		new Setting(containerEl)
+			.setName('Preview font color')
+			.setDesc('Font color of the preview popup.')
+			.addColorPicker((picker) =>
+				picker
+					.setValue(this.plugin.settings.fontColor)
+					.onChange(async (value) => {
+						this.plugin.setFontColor(value);
+					})
+			);
 	}
 }
 
@@ -370,6 +384,12 @@ export default class InlineMathPreviewPlugin extends Plugin {
 		this.refreshPopupStyles();
 	}
 
+	setFontColor(value: string) {
+		this.settings.fontColor = value;
+		this.saveSettings();
+		this.refreshPopupStyles();
+	}
+
 	private refreshPopupStyles() {
 		if (!this.viewPluginRef) return;
 		const leaves = this.app.workspace.getLeavesOfType('markdown');
@@ -382,6 +402,7 @@ export default class InlineMathPreviewPlugin extends Plugin {
 					if (instance) {
 						instance.popup.style.fontSize = `${this.settings.fontSize}px`;
 						instance.popup.style.backgroundColor = this.settings.backgroundColor;
+						instance.popup.style.color = this.settings.fontColor;
 					}
 				}
 			}

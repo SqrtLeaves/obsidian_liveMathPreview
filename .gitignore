@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+main.js
+*.js.map
+
+# Obsidian plugin data
+data.json
+.hot-reload/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+#tmp.txt
+#*.tmp
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
